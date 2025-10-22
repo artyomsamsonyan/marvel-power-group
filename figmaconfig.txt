@@ -1,0 +1,13 @@
+colors : {
+    yellow: #F6D330;
+    black: #000;
+    text_black: #0B0D21;
+    dark_purple: #210B20;
+}
+
+fonts : {
+    Alata: 400,
+    Sofia Pro: 300,
+    Sofia Pro: 600,
+    Sofia Pro: 700,
+}
