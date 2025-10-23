@@ -1,16 +1,45 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-html {
-  scroll-behavior: smooth;
+@theme {
+  --color-yellow: #F6D330;
+  --color-text-black: #0B0D21;
+  --color-dark-purple: #210B20;
+
+  --font-family-alata: var(--font-alata), sans-serif;
+  --font-family-sofia: 'Sofia Pro', sans-serif;
 }
 
-body {
-  @apply font-sans bg-light text-dark antialiased;
+@font-face {
+  font-family: 'Sofia Pro';
+  src: url('/fonts/sofia-pro/Sofia_Pro_Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
 }
 
-:focus-visible {
-  outline: 2px solid #ffd900;
-  outline-offset: 2px;
+@font-face {
+  font-family: 'Sofia Pro';
+  src: url('/fonts/sofia-pro/Sofia_Pro_Semi_Bold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sofia Pro';
+  src: url('/fonts/sofia-pro/Sofia_Pro_Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-yellow);
+    outline-offset: 2px;
+  }
 }
