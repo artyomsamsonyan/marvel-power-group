@@ -1,31 +1,19 @@
-import type { Metadata } from "next";
-import { Alata } from "next/font/google";
 import "./globals.css";
-import Header from '@/components/Header';
+import Header from "@/components/Header";
+import { alata, sofiaProLight, sofiaProNormal, sofiaProSemiBold, sofiaProBold } from "./fonts";
 
-const alata = Alata({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-alata',
-});
-
-export const metadata: Metadata = {
+export const metadata = {
   title: "Marvel Power Group",
   description: "Enterprise Strategy, Wholesale Power, Market Development",
-  openGraph: {
-    title: "Marvel Power Group",
-    description: "Enterprise Strategy, Wholesale Power, Market Development",
-  },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={alata.variable}>
-      <body className="font-sofia antialiased">
+    <html
+      lang="en"
+      className={`${alata.variable} ${sofiaProLight.variable} ${sofiaProSemiBold.variable} ${sofiaProBold.variable} ${sofiaProNormal.variable}`}
+    >
+      <body className="antialiased">
         <Header />
         <div className="hidden md:flex fixed top-0 left-0 right-0 bottom-0 justify-between z-10">
           <div className=""></div>

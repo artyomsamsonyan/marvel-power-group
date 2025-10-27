@@ -33,7 +33,7 @@ export default function Hero() {
                         </h1>
 
                         <p
-                            className="font-sofia font-light text-center text-white mb-[44px] md:mb-[79px] "
+                            className="font-sofiaLight font-light text-center text-white mb-[44px] md:mb-[79px] "
                             style={{
                                 fontSize: 'clamp(14px, 2vw, 25px)',
                                 lineHeight: 'clamp(20px, 2.5vw, 35px)',
@@ -44,7 +44,7 @@ export default function Hero() {
 
                         <a
                             href="#contact"
-                            className="inline-flex uppercase items-center gap-2 bg-yellow py-[17px] px-[40px] mb-[20px] md:mb-[106px] leading-[14px] tracking-[0.6px] font-sofia font-semibold text-[14px] text-black transition hover:brightness-95 focus:outline-2 focus:outline-yellow focus:outline-offset-2"
+                            className="inline-flex uppercase items-center gap-2 bg-yellow py-[17px] px-[40px] mb-[20px] md:mb-[106px] leading-[14px] tracking-[0.6px] font-sofiaSemi font-semibold text-[14px] text-black transition hover:brightness-95 focus:outline-2 focus:outline-yellow focus:outline-offset-2"
                         >
                             <span>Contact us</span>
                             <svg
@@ -75,7 +75,7 @@ export default function Hero() {
                         <div className="h-[15px] w-px bg-white" />
                         <div />
                     </div>
-                    <p className="font-sofia font-light text-[14px] text-center text-white">
+                    <p className="font-sofiaLight font-light text-[14px] text-center text-white">
                         Scroll for more
                     </p>
                 </div>

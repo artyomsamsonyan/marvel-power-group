@@ -77,7 +77,7 @@ export default function Header() {
                     <nav className="hidden md:flex items-center gap-[66px]">
                         <a
                             href="#about"
-                            className={`font-sofia font-normal text-[18px] pb-1 border-b transition-all duration-300 ${activeSection === 'about'
+                            className={`font-sofiaNormal font-normal text-[18px] pb-1 border-b transition-all duration-300 ${activeSection === 'about'
                                 ? 'border-yellow'
                                 : 'border-transparent hover:border-yellow'
                                 } ${isScrolled ? 'text-white' : 'text-black'}`}
@@ -86,7 +86,7 @@ export default function Header() {
                         </a>
                         <a
                             href="#services"
-                            className={`font-sofia font-normal text-[18px] pb-1 border-b transition-all duration-300 ${activeSection === 'services'
+                            className={`font-sofiaNormal font-normal text-[18px] pb-1 border-b transition-all duration-300 ${activeSection === 'services'
                                 ? 'border-yellow'
                                 : 'border-transparent hover:border-yellow'
                                 } ${isScrolled ? 'text-white' : 'text-black'}`}
@@ -95,7 +95,7 @@ export default function Header() {
                         </a>
                         <a
                             href="#contact"
-                            className={`font-sofia font-normal text-[18px] pb-1 border-b transition-all duration-300 ${activeSection === 'contact'
+                            className={`font-sofiaNormal font-normal text-[18px] pb-1 border-b transition-all duration-300 ${activeSection === 'contact'
                                 ? 'border-yellow'
                                 : 'border-transparent hover:border-yellow'
                                 } ${isScrolled ? 'text-white' : 'text-black'}`}
@@ -142,21 +142,21 @@ export default function Header() {
                         <a
                             onClick={() => setIsMobileMenuOpen(false)}
                             href="#about"
-                            className="font-sofia font-normal text-[40px] leading-[51px] text-black"
+                            className="font-sofiaNormal font-normal text-[40px] leading-[51px] text-black"
                         >
                             About
                         </a>
                         <a
                             onClick={() => setIsMobileMenuOpen(false)}
                             href="#services"
-                            className="font-sofia font-normal text-[40px] leading-[51px] text-black"
+                            className="font-sofiaNormal font-normal text-[40px] leading-[51px] text-black"
                         >
                             Services
                         </a>
                         <a
                             onClick={() => setIsMobileMenuOpen(false)}
                             href="#contact"
-                            className="font-sofia font-normal text-[40px] leading-[51px] text-black"
+                            className="font-sofiaNormal font-normal text-[40px] leading-[51px] text-black"
                         >
                             Contact
                         </a>
@@ -164,7 +164,7 @@ export default function Header() {
                     <a
                         onClick={() => setIsMobileMenuOpen(false)}
                         href="#contact"
-                        className="flex uppercase items-center gap-2 bg-yellow py-[17px] px-[40px] font-sofia font-semibold text-[14px] leading-[14px] text-black transition hover:brightness-95"
+                        className="flex uppercase items-center gap-2 bg-yellow py-[17px] px-[40px] font-sofiaSemi font-semibold text-[14px] leading-[14px] text-black transition hover:brightness-95"
                     >
                         <span>Contact us</span>
                         <svg width="20" height="10" viewBox="0 0 20 10" fill="none" xmlns="http://www.w3.org/2000/svg">

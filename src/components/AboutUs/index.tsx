@@ -34,7 +34,7 @@ export default function About() {
             />
           </div>
           <div
-            className="flex flex-col md:gap-6 max-w-[490px] font-sofia font-light"
+            className="flex flex-col md:gap-6 max-w-[490px] font-sofiaLight font-light text-dark-purple"
             style={{
               fontSize: 'clamp(14px, 1.5vw, 18px)',
               lineHeight: 'clamp(24px, 2vw, 26px)',

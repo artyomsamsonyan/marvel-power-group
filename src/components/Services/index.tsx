@@ -59,7 +59,7 @@ export default function Services() {
                 />
 
                 <div
-                    className="max-w-[837px] font-sofia font-light text-black mb-[56px] md:mb-[47px]"
+                    className="max-w-[837px] font-sofiaLight font-light text-dark-purple mb-[56px] md:mb-[47px]"
                     style={{
                         fontSize: 'clamp(14px, 1.5vw, 18px)',
                         lineHeight: 'clamp(24px, 2vw, 26px)',
@@ -74,7 +74,7 @@ export default function Services() {
                     {servicesData.map((service, index) => (
                         <div key={index} className="flex-1">
                             <h3
-                                className="font-sofia font-bold text-black max-w-[288px] mb-[25px] md:mb-[33px]"
+                                className="font-sofiaBold font-bold text-black max-w-[288px] mb-[25px] md:mb-[33px]"
                                 style={{
                                     fontSize: 'clamp(25px, 3vw, 40px)',
                                     lineHeight: 'clamp(16px, 3.5vw, 42px)',
@@ -87,7 +87,7 @@ export default function Services() {
                                 {service.items.map((item, idx) => (
                                     <li
                                         key={idx}
-                                        className="flex items-start gap-[9px] md:gap-[15px] font-sofia font-light text-black"
+                                        className="flex items-start gap-[9px] md:gap-[15px] font-sofiaLight font-light text-dark-purple"
                                         style={{
                                             fontSize: 'clamp(14px, 1.5vw, 18px)',
                                             lineHeight: 'clamp(16px, 1.8vw, 20px)',
@@ -111,7 +111,7 @@ export default function Services() {
                 </div>
 
                 <div
-                    className="font-sofia font-light text-black mt-[40px] md:mt-[47px] max-w-[837px]"
+                    className="font-sofiaLight font-light text-dark-purple mt-[40px] md:mt-[47px] max-w-[837px]"
                     style={{
                         fontSize: 'clamp(14px, 1.5vw, 18px)',
                         lineHeight: 'clamp(24px, 2vw, 26px)',

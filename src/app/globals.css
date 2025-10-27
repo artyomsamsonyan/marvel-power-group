@@ -4,33 +4,26 @@
   --color-yellow: #F6D330;
   --color-text-black: #0B0D21;
   --color-dark-purple: #210B20;
-
-  --font-family-alata: var(--font-alata), sans-serif;
-  --font-family-sofia: 'Sofia Pro', sans-serif;
 }
 
-@font-face {
-  font-family: 'Sofia Pro';
-  src: url('/fonts/sofia-pro/Sofia_Pro_Light.otf') format('opentype');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
+.font-sofiaLight {
+  font-family: var(--font-sofia-light);
 }
 
-@font-face {
-  font-family: 'Sofia Pro';
-  src: url('/fonts/sofia-pro/Sofia_Pro_Semi_Bold.otf') format('opentype');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
+.font-sofiaNormal {
+  font-family: var(--font-sofia-normal);
 }
 
-@font-face {
-  font-family: 'Sofia Pro';
-  src: url('/fonts/sofia-pro/Sofia_Pro_Bold.otf') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
+.font-sofiaSemi {
+  font-family: var(--font-sofia-semibold);
+}
+
+.font-sofiaBold {
+  font-family: var(--font-sofia-bold);
+}
+
+.font-alata {
+  font-family: var(--font-alata);
 }
 
 @layer base {
