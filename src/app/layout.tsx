@@ -27,7 +27,7 @@ export default function RootLayout({
     <html lang="en" className={alata.variable}>
       <body className="font-sofia antialiased">
         <Header />
-        <div className="fixed top-0 left-0 right-0 bottom-0 flex justify-between z-5 ">
+        <div className="hidden md:flex fixed top-0 left-0 right-0 bottom-0 justify-between z-10">
           <div className=""></div>
           <div className="h-full w-px bg-[#0000000F]"></div>
           <div className="h-full w-px bg-[#0000000F]"></div>
