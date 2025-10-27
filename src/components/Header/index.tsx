@@ -68,7 +68,7 @@ export default function Header() {
             className={`fixed top-0 z-40 left-0 right-0 z-50 transition-colors duration-200 ${isMobileMenuOpen ? 'bg-black text-white' : isScrolled ? 'bg-black text-white' : 'bg-transparent text-black'
                 }`}
         >
-            <div className="relative mx-auto max-w-[1142px] md:py-[37px] px-[15px] py-[20px]">
+            <div className="relative mx-auto max-w-[1142px] md:py-[37px] px-[15px] py-5">
                 <div className="flex items-center justify-between">
                     <Link onClick={() => setIsMobileMenuOpen(false)} href="/">
                         <MainLogo isScrolled={isScrolled} isMobileMenuOpen={isMobileMenuOpen} />
@@ -134,7 +134,7 @@ export default function Header() {
                 role="dialog"
                 aria-modal="true"
                 aria-label="Mobile navigation menu"
-                className={`fixed inset-0 bg-white z-30 top-[78px] overflow-hidden transition-all duration-500 ease-out ${isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
+                className={`fixed inset-0 bg-white z-70 top-[78px] overflow-hidden transition-all duration-500 ease-out ${isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
                     }`}
             >
                 <div className="flex flex-col items-center gap-4 justify-between pt-[42px] pb-[69px] px-5 h-full">
@@ -164,7 +164,7 @@ export default function Header() {
                     <a
                         onClick={() => setIsMobileMenuOpen(false)}
                         href="#contact"
-                        className="flex uppercase items-center gap-2 bg-yellow py-[17px] px-[40px] font-sofiaSemi font-semibold text-[14px] leading-[14px] text-black transition hover:brightness-95"
+                        className="flex uppercase items-center gap-2 bg-yellow py-[17px] px-[40px] font-sofiaSemi font-semibold text-3.5 leading-3.5 text-black transition hover:brightness-95"
                     >
                         <span>Contact us</span>
                         <svg width="20" height="10" viewBox="0 0 20 10" fill="none" xmlns="http://www.w3.org/2000/svg">

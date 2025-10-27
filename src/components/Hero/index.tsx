@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function Hero() {
     return (
-        <section className="relative w-full min-h-screen ">
+        <section id="hero" className="relative w-full min-h-screen ">
             <div className='flex flex-col justify-end w-full min-h-screen z-20'>
                 <Image
                     src="/assets/images/heroBckImg.jpg"
@@ -44,7 +44,7 @@ export default function Hero() {
 
                         <a
                             href="#contact"
-                            className="inline-flex uppercase items-center gap-2 bg-yellow py-[17px] px-[40px] mb-[20px] md:mb-[106px] leading-[14px] tracking-[0.6px] font-sofiaSemi font-semibold text-[14px] text-black transition hover:brightness-95 focus:outline-2 focus:outline-yellow focus:outline-offset-2"
+                            className="inline-flex uppercase items-center gap-2 bg-yellow py-[17px] px-[40px] mb-5 md:mb-[106px] leading-3.5 tracking-[0.6px] font-sofiaSemi font-semibold text-3.5 text-black transition hover:brightness-95 focus:outline-2 focus:outline-yellow focus:outline-offset-2"
                         >
                             <span>Contact us</span>
                             <svg
@@ -75,7 +75,7 @@ export default function Hero() {
                         <div className="h-[15px] w-px bg-white" />
                         <div />
                     </div>
-                    <p className="font-sofiaLight font-light text-[14px] text-center text-white">
+                    <p className="font-sofiaLight font-light text-3.5 text-center text-white">
                         Scroll for more
                     </p>
                 </div>

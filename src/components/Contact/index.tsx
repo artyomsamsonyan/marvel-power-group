@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Toast from "../Header/components/Toast";
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error' | 'rate-limited';
 
@@ -9,12 +10,20 @@ interface FormErrors {
   email?: string;
 }
 
+interface ApiResponse {
+  ok?: boolean;
+  error?: string;
+  message?: string;
+}
+
 export default function Contact() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
   const [status, setStatus] = useState<FormStatus>('idle');
   const [errors, setErrors] = useState<FormErrors>({});
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState<string>("");
+  const [successTimerId, setSuccessTimerId] = useState<NodeJS.Timeout | null>(null);
+  const [toast, setToast] = useState<{ message: string; type: "success" | "error" | "rate-limited" } | null>(null);
 
   const validate = (): boolean => {
     const newErrors: FormErrors = {};
@@ -35,7 +44,7 @@ export default function Contact() {
     return Object.keys(newErrors).length === 0;
   };
 
-  async function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>): Promise<void> {
     e.preventDefault();
 
     if (!validate()) return;
@@ -49,27 +58,64 @@ export default function Contact() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email }),
       });
+      const data: ApiResponse = await response.json();
 
-      const data = await response.json();
 
       if (response.ok) {
-        setStatus('success');
-        setMessage("Thank you! Your info has been successfully sent.");
-        setName("");
-        setEmail("");
-        setErrors({});
+        setToast({ message: "Thank you! Your info has been successfully sent.", type: "success" });
       } else if (response.status === 429) {
+        setToast({ message: "Too many requests. Please try again in a minute.", type: "rate-limited" });
+      } else {
+        setToast({ message: data.error || "Something went wrong. Please try again.", type: "error" });
+      }
+
+      if (response.ok) {
+        setStatus('submitting');
+        setMessage("Thank you! Your info has been successfully sent.");
+
+        const timerId = setTimeout(() => {
+          setStatus('success');
+          setSuccessTimerId(null);
+        }, 3000);
+
+        setSuccessTimerId(timerId);
+      } else if (response.status === 429) {
+        if (successTimerId) {
+          clearTimeout(successTimerId);
+          setSuccessTimerId(null);
+        }
         setStatus('rate-limited');
         setMessage("Too many requests. Please try again in a minute.");
       } else {
+        if (successTimerId) {
+          clearTimeout(successTimerId);
+          setSuccessTimerId(null);
+        }
         setStatus('error');
         setMessage(data.error || "Something went wrong. Please try again.");
       }
-    } catch (error) {
+    } catch (error: unknown) {
+      setToast({ message: "Network error. Please check your connection.", type: "error" });
+
+      if (successTimerId) {
+        clearTimeout(successTimerId);
+        setSuccessTimerId(null);
+      }
+      console.error('Submission error:', error);
       setStatus('error');
       setMessage("Network error. Please check your connection.");
     }
   }
+
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setName(e.target.value);
+    if (errors.name) setErrors({ ...errors, name: undefined });
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setEmail(e.target.value);
+    if (errors.email) setErrors({ ...errors, email: undefined });
+  };
 
   return (
     <section id="contact" className="bg-black">
@@ -156,8 +202,18 @@ export default function Contact() {
                   <br />
                   if you need additional assistance
                 </div>
+              ) : status === 'rate-limited' ? (
+                <div
+                  className="font-sofiaLight font-light text-yellow"
+                  style={{
+                    fontSize: 'clamp(14px, 1.5vw, 18px)',
+                    lineHeight: 'clamp(22px, 2vw, 26px)',
+                  }}
+                >
+                  {message}
+                </div>
               ) : (
-                <form onSubmit={onSubmit} className="flex flex-col items-end" noValidate>
+                <form onSubmit={onSubmit} className="flex flex-col items-end w-full" noValidate>
                   <div className="w-full mb-[10px] md:mb-[15px]">
                     <label htmlFor="name" className="sr-only">
                       Name (required)
@@ -166,14 +222,11 @@ export default function Contact() {
                       id="name"
                       type="text"
                       value={name}
-                      onChange={(e) => {
-                        setName(e.target.value);
-                        if (errors.name) setErrors({ ...errors, name: undefined });
-                      }}
+                      onChange={handleNameChange}
                       aria-required="true"
                       aria-invalid={!!errors.name}
                       aria-describedby={errors.name ? "name-error" : undefined}
-                      className={`w-full bg-white px-[20px] py-[14px] text-black placeholder-black font-sofiaSemi font-semibold text-[14px] leading-[14px] tracking-[0.6px] focus:outline-2 focus:outline-offset-0 ${errors.name ? 'focus:outline-red-500 outline outline-2 outline-red-500' : 'focus:outline-yellow'
+                      className={`w-full bg-white px-5 py-3.5 text-black placeholder-black font-sofiaSemi font-semibold text-sm leading-[14px] tracking-[0.6px] focus:outline-2 focus:outline-offset-0 ${errors.name ? 'focus:outline-red-500 outline outline-2 outline-red-500' : 'focus:outline-yellow'
                         }`}
                       placeholder="NAME *"
                     />
@@ -195,14 +248,11 @@ export default function Contact() {
                       id="email"
                       type="email"
                       value={email}
-                      onChange={(e) => {
-                        setEmail(e.target.value);
-                        if (errors.email) setErrors({ ...errors, email: undefined });
-                      }}
+                      onChange={handleEmailChange}
                       aria-required="true"
                       aria-invalid={!!errors.email}
                       aria-describedby={errors.email ? "email-error" : undefined}
-                      className={`w-full bg-white px-[20px] py-[14px] text-black placeholder-black font-sofiaSemi font-semibold text-[14px] leading-[14px] tracking-[0.6px] focus:outline-2 focus:outline-offset-0 ${errors.email ? 'focus:outline-red-500 outline outline-2 outline-red-500' : 'focus:outline-yellow'
+                      className={`w-full bg-white px-5 py-3.5 text-black placeholder-black font-sofiaSemi font-semibold text-sm leading-[14px] tracking-[0.6px] focus:outline-2 focus:outline-offset-0 ${errors.email ? 'focus:outline-red-500 outline outline-2 outline-red-500' : 'focus:outline-yellow'
                         }`}
                       placeholder="E-MAIL *"
                     />
@@ -216,20 +266,9 @@ export default function Contact() {
                       </p>
                     )}
                   </div>
-                  {(status === 'error' || status === 'rate-limited') && (
-                    <div
-                      className="w-full mb-3 text-sm font-sofiaSemi"
-                      role="alert"
-                    >
-                      <p className={status === 'rate-limited' ? 'text-yellow' : 'text-red-400'}>
-                        {message}
-                      </p>
-                    </div>
-                  )}
                   <button
                     type="submit"
-                    disabled={status === 'submitting'}
-                    className="max-w-[196px] md:max-w-[272px] w-full inline-flex justify-center items-center gap-2 bg-yellow px-6 py-[17px] font-sofiaSemi font-semibold text-[14px] leading-[14px] tracking-[0.6px] text-black transition hover:brightness-95 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-2 focus:outline-white focus:outline-offset-4"
+                    className="max-w-[196px] md:max-w-[272px] w-full inline-flex justify-center items-center gap-2 bg-yellow px-6 py-[17px] font-sofia font-semibold text-sm leading-[14px] tracking-[0.6px] text-black transition hover:brightness-95 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-2 focus:outline-white focus:outline-offset-4"
                   >
                     {status === 'submitting' ? 'Sending...' : 'Send'}
                     <svg
@@ -251,8 +290,14 @@ export default function Contact() {
               )}
             </div>
           </div>
-
-          <div className="hidden md:flex flex-col items-center justify-center w-full">
+          {toast && (
+            <Toast
+              message={toast.message}
+              type={toast.type}
+              onClose={() => setToast(null)}
+            />
+          )}
+          <div className="hidden md:flex flex-col items-center justify-center w-full" aria-hidden="true">
             <div className="flex justify-between z-10 w-full items-end ">
               <div className="h-[15px] w-px bg-white"></div>
               <div className="h-[15px] w-px bg-white"></div>

@@ -51,7 +51,7 @@ export default function Services() {
                 </h2>
 
                 <div
-                    className="mb-[24px] md:mb-[45px] bg-white"
+                    className="mb-6 md:mb-[45px] bg-white"
                     style={{
                         height: 'clamp(4px, 0.5vw, 6px)',
                         width: 'clamp(65px, 8vw, 100px)',
@@ -102,7 +102,7 @@ export default function Services() {
                             <a
                                 href={service.link}
                                 aria-label={`Contact us about ${service.title}`}
-                                className="mt-[25px] md:mt-[41px] ml-[13px] md:ml-[20px] inline-flex items-center transition-opacity hover:opacity-70 focus:outline-2 focus:outline-black focus:outline-offset-4"
+                                className="mt-[25px] md:mt-[41px] ml-[13px] md:ml-5 inline-flex items-center transition-opacity hover:opacity-70 focus:outline-2 focus:outline-black focus:outline-offset-4"
                             >
                                 <Arrow />
                             </a>
