@@ -23,15 +23,18 @@ export default function About() {
         />
         <div className="flex flex-col md:flex-row items-start gap-[30px] md:gap-[68px]">
           <div className="relative w-full md:w-auto flex-shrink-0">
-            <Image
-              src="/assets/images/aboutUsImg.jpg"
-              alt="Modern city architecture showcasing urban development"
-              width={486}
-              height={315}
-              sizes="(max-width: 768px) 100vw, 486px"
-              quality={90}
-              className="object-cover w-full md:w-[486px]"
-            />
+            <div className="relative w-full md:w-[486px] h-[315px]">
+              <Image
+                src="/assets/images/aboutUsImg.webp"
+                alt="Modern city architecture showcasing urban development"
+                fill
+                className="object-cover"
+                quality={90} 
+                sizes="(max-width: 768px) 100vw, 486px"
+                style={{ aspectRatio: '16/9' }} 
+                loading="lazy"
+              />
+            </div>
           </div>
           <div
             className="flex flex-col md:gap-6 max-w-[490px] font-sofiaLight font-light text-dark-purple"

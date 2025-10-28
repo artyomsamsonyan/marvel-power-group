@@ -4,22 +4,25 @@ import Image from 'next/image';
 
 export default function Hero() {
     return (
-        <section id="hero" className="relative w-full min-h-screen ">
-            <div className='flex flex-col justify-end w-full min-h-screen z-20'>
+        <section id="hero" className="relative w-full min-h-screen">
+            <div className="relative w-full min-h-screen z-20 flex flex-col justify-end">
                 <Image
-                    src="/assets/images/heroBckImg.jpg"
+                    src="/assets/images/heroBckImg.webp"
                     alt="Marvel Power Group office building"
                     fill
                     priority
-                    quality={90}
+                    quality={90} 
                     className="object-cover"
                     sizes="100vw"
+                    style={{ aspectRatio: '16/9' }} 
                 />
+
                 <div
                     className="absolute inset-0 z-10"
                     style={{ background: 'linear-gradient(0deg, #000000 4.66%, rgba(0, 0, 0, 0) 76.78%)' }}
                     aria-hidden="true"
                 />
+
                 <div className="relative z-20 mx-auto max-w-[1142px] px-[15px] flex flex-col justify-between pt-[78px] md:pt-[155px]">
                     <div className="flex flex-col items-center justify-center flex-1 pt-[42px] md:pt-0">
                         <h1
@@ -33,7 +36,7 @@ export default function Hero() {
                         </h1>
 
                         <p
-                            className="font-sofiaLight font-light text-center text-white mb-[44px] md:mb-[79px] "
+                            className="font-sofiaLight font-light text-center text-white mb-[44px] md:mb-[79px]"
                             style={{
                                 fontSize: 'clamp(14px, 2vw, 25px)',
                                 lineHeight: 'clamp(20px, 2.5vw, 35px)',
@@ -63,8 +66,8 @@ export default function Hero() {
                             </svg>
                         </a>
                     </div>
-
                 </div>
+
                 <div className="hidden md:flex flex-col items-center justify-center w-full relative z-20 pb-[55px]" aria-hidden="true">
                     <div className="flex justify-between w-full items-end mb-7">
                         <div />
@@ -81,5 +84,6 @@ export default function Hero() {
                 </div>
             </div>
         </section>
+
     );
 }
