@@ -33,18 +33,12 @@ export default function Header() {
 
     useEffect(() => {
         if (isMobileMenuOpen) {
-            const scrollY = window.scrollY;
-            document.body.style.position = 'fixed';
-            document.body.style.top = `-${scrollY}px`;
-            document.body.style.width = '100%';
+            document.body.style.overflow = 'hidden';
         } else {
-            const scrollY = document.body.style.top;
-            document.body.style.position = '';
-            document.body.style.top = '';
-            document.body.style.width = '';
-            window.scrollTo(0, parseInt(scrollY || '0') * -1);
+            document.body.style.overflow = '';
         }
     }, [isMobileMenuOpen]);
+
 
     useEffect(() => {
         const handleEsc = (e: KeyboardEvent) => {
@@ -134,10 +128,10 @@ export default function Header() {
                 role="dialog"
                 aria-modal="true"
                 aria-label="Mobile navigation menu"
-                className={`fixed inset-0 bg-white z-70 top-[78px] overflow-hidden transition-all duration-500 ease-out ${isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
+                className={`block md:hidden fixed inset-0 bg-white z-70 top-[78px] overflow-hidden transition-all duration-500 ease-out ${isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
                     }`}
             >
-                <div className="flex flex-col items-center gap-4 justify-between pt-[42px] pb-[69px] px-5 h-full">
+                <div className="flex flex-col items-center gap-4 justify-between pt-[42px] pb-[69px] px-5 h-full overflow-y-auto">
                     <nav className="flex flex-col items-center gap-[23px]">
                         <a
                             onClick={() => setIsMobileMenuOpen(false)}

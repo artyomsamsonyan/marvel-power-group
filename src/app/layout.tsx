@@ -15,7 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <body className="antialiased">
         <Header />
-        <div className="hidden md:flex fixed top-0 left-0 right-0 bottom-0 justify-between z-10">
+        <div className="hidden md:flex fixed top-0 left-0 right-0 bottom-0 justify-between z-10" aria-hidden="true">
           <div className=""></div>
           <div className="h-full w-px bg-[#0000000F]"></div>
           <div className="h-full w-px bg-[#0000000F]"></div>
